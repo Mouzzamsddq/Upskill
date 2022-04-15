@@ -1,3 +1,10 @@
 1) Searching Algorithms 
     -- Linear Search
     -- Binary Search
+
+2) Sorting Algorithms
+    -- Bubble Sorting
+    -- Quick Sorting 
+    -- Insertion Sorting
+    -- Selection Sorting 
+    -- Merge Sorting
