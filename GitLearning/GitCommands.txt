@@ -1,0 +1,16 @@
+1) Command to check the remote url
+
+   git config --get remote.origin.url 
+
+_______________________________________________________
+
+2) Command to check the user email
+
+    git config --get user.email
+
+_______________________________________________________
+
+    
+     
+
+   
