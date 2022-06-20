@@ -1,5 +1,4 @@
 import java.util.*;
-
 class FibonacciSeriesWithoutRecusrion {
     public static void main(String [] args) {
         Scanner sc = new Scanner(System.in);
@@ -15,5 +14,6 @@ class FibonacciSeriesWithoutRecusrion {
             a = b;
             b = c;
         }
+        sc.close();
     }
 }
