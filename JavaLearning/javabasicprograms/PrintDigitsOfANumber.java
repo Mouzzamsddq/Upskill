@@ -13,6 +13,7 @@ public class PrintDigitsOfANumber {
             number = number % div;
             div = div / 10;
         }
+        sc.close();
         
     }
     public static int countDigits(int n) 
