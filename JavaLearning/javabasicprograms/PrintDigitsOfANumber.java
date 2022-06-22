@@ -1,4 +1,5 @@
 import java.util.*;
+// print digits of a number from left to right
 public class PrintDigitsOfANumber {
     public static void main(String [] args) 
     {
