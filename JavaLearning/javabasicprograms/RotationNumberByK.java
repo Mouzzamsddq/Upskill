@@ -5,6 +5,7 @@ public class RotationNumberByK {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int k = sc.nextInt();
+
          
 // first count the no of digits
         int temp = n;
@@ -14,6 +15,11 @@ public class RotationNumberByK {
              temp = temp / 10;
              nod++;
         }
+
+       k = k % nod;
+       if(k < 0) {
+         k = k + nod;
+       }
        
         int div = 1;
         int mult = 1;
