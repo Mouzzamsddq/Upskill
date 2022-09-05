@@ -21,7 +21,7 @@ public class ArrayInsertionOperation3 {
         }
         System.out.println();
         // perform insertion at specific postion
-        if (pos < 0 || pos > n) {
+        if (pos < 1 || pos > n) {
             System.out.println("Invalid position");
         } else {
             for (int i = n - 1; i >= pos - 1; i--) {
