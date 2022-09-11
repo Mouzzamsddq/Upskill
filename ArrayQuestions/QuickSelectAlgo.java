@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 /*
- Quick select algo to find the kth smallest element in O(n) time
+ Quick select algo to find the kth smallest element in O(n) time 
 */
 public class QuickSelectAlgo {
     public static void main(String[] args) {
@@ -51,3 +51,8 @@ public class QuickSelectAlgo {
         arr[j] = temp;
     }
 }
+
+/*
+ * Time complexity - O(n)
+ * Space Complextity - O(1)
+ */
