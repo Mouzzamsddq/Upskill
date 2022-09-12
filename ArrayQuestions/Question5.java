@@ -10,7 +10,7 @@ public class Question5 {
         }
         int i = 0, j = 0;
         while (i < a.length) {
-            if (a[i] < 0) {
+            if (a[i] >= 0) {
                 swap(a, i, j);
                 i++;
                 j++;
