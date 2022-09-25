@@ -1,0 +1,15 @@
+1) Recursion
+   
+   --Basic Problem based on recursion
+
+2) Searching Algorithms 
+    -- Linear Search
+    -- Binary Search
+
+3) Sorting Algorithms
+    -- Bubble Sorting
+    -- Quick Sorting 
+    -- Insertion Sorting
+    -- Selection Sorting 
+    -- Merge Sorting
+
