@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+import javax.crypto.AEADBadTagException;
 import javax.sound.sampled.Line;
 
 public class LinkedListMethodImplementation {
@@ -86,6 +87,56 @@ public class LinkedListMethodImplementation {
                 return tempHead.data;
             }
         }
+
+        public void addFirst(int val) {
+            Node temp = new Node();
+            temp.data = val;
+            temp.next = head;
+            head = temp;
+            if (size == 0) {
+                tail = temp;
+            }
+            size++;
+        }
+
+        public void addAt(int index, int val) {
+            if (index < 0 || index > size) {
+                System.out.println("Invalid arguments");
+            } else if (index == 0) {
+                addFirst(val);
+            } else if (index == size) {
+                addLast(val);
+            } else {
+                Node temp = new Node();
+                temp.data = val;
+                temp.next = null;
+                Node tempHead = head;
+                for (int i = 0; i < index - 1; i++) {
+                    tempHead = tempHead.next;
+                }
+                temp.next = tempHead.next;
+                tempHead.next = temp;
+                size++;
+            }
+
+        }
+
+        public void removeLast() {
+            if (size == 0) {
+                System.out.println("Linked list is empty");
+            } else if (size == 1) {
+                head = tail = null;
+                size = 0;
+            } else {
+                Node tempHead = head;
+                for (int i = 0; i < size - 2; i++) {
+                    tempHead = tempHead.next;
+                }
+                tempHead.next = null;
+                tail = tempHead;
+                size--;
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -114,6 +165,35 @@ public class LinkedListMethodImplementation {
         // get ith index data
         int i = 1;
         System.out.println(i + "th index data : " + linkedList.getAt(i));
+
+        // add data at first position
+        linkedList.addFirst(10);
+        linkedList.addFirst(12);
+
+        // display linked list after add data at first position
+        linkedList.display();
+
+        // add element at ith index
+        i = 0;
+        linkedList.addAt(i, 19);
+
+        // display linked list
+        linkedList.display();
+
+        i = linkedList.size;
+        linkedList.addAt(i, 20);
+        // display linked list
+        linkedList.display();
+
+        i = 3;
+        linkedList.addAt(i, 1);
+        // display linked list
+        linkedList.display();
+        System.out.println("size of linked list : " + linkedList.size());
+
+        // remove last
+        linkedList.removeLast();
+        linkedList.display();
     }
 
 }
