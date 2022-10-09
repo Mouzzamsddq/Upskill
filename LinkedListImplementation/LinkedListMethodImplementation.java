@@ -137,6 +137,32 @@ public class LinkedListMethodImplementation {
                 size--;
             }
         }
+
+        private Node getNodeAt(int index) {
+            Node tempHead = head;
+            int count = 0;
+            while (count < index) {
+                tempHead = tempHead.next;
+                count++;
+            }
+            return tempHead;
+        }
+
+        public void reverseDI() {
+            int l = 0;
+            int r = size - 1;
+            while (l < r) {
+                Node leftNode = getNodeAt(l);
+                Node rightNode = getNodeAt(r);
+
+                int temp = leftNode.data;
+                leftNode.data = rightNode.data;
+                rightNode.data = temp;
+
+                l++;
+                r--;
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -193,6 +219,10 @@ public class LinkedListMethodImplementation {
 
         // remove last
         linkedList.removeLast();
+        linkedList.display();
+
+        // reverse linked list
+        linkedList.reverseDI();
         linkedList.display();
     }
 
