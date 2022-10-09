@@ -1,3 +1,5 @@
+package LinkedListImplementation;
+
 import java.util.Scanner;
 
 public class LinkedListMethodImplementation {
