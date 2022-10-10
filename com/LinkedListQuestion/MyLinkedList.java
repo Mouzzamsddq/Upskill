@@ -1,3 +1,4 @@
+import javax.imageio.plugins.tiff.FaxTIFFTagSet;
 
 class Node {
     int data;
@@ -175,5 +176,50 @@ public class MyLinkedList {
         Node temp = head;
         head = tail;
         tail = temp;
+    }
+
+    public void removeAt(int index) {
+        if (size == 0) {
+            System.out.println("List is empty");
+        } else if (index < 0 || index >= size) {
+            System.out.println("Invalid arguments");
+        } else if (index == 0) {
+            removeFirst();
+        } else if (index == size - 1) {
+            removeLast();
+        } else {
+            Node tempHead = head;
+            for (int i = 0; i < index - 1; i++) {
+                tempHead = tempHead.next;
+            }
+            Node nodeWhichRemove = tempHead.next;
+            tempHead.next = nodeWhichRemove.next;
+            size--;
+        }
+    }
+
+    public int kthFromLast(int k) {
+        Node slow = head;
+        Node fast = head;
+
+        for (int i = 0; i < k; i++) {
+            fast = fast.next;
+        }
+
+        while (fast != tail) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return slow.data;
+    }
+
+    public int midOfLinkedList() {
+        Node slow = head;
+        Node fast = head;
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow.data;
     }
 }
