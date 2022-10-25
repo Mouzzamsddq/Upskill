@@ -14,6 +14,11 @@ public class NextsmallerElementRight {
         int[] nse = nextSmallerElementRight(arr, n);
         printArray(nse);
 
+        /*
+         * Time complexity - O(n)
+         * Space Complexity - O(n)
+         */
+
     }
 
     public static void printArray(int[] arr) {
