@@ -25,15 +25,15 @@ public class NextGreaterElement {
     public static int[] nextGreaterElement(int[] arr, int n) {
         int nge[] = new int[n];
         Stack<Integer> st = new Stack<Integer>();
-        for (int i = n - 1; i>= 0 ; i--) {
-            while (!st.empty() && st.peek() < arr[i]) {
+        for (int i = n - 1; i >= 0; i--) {
+            while (!st.empty() && st.peek() <= arr[i]) {
                 st.pop();
             }
             if (st.empty()) {
                 nge[i] = -1;
             } else {
                 nge[i] = st.peek();
-            }
+            }z
             st.push(arr[i]);
         }
 
