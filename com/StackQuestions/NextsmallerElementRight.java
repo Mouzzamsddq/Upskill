@@ -1,7 +1,7 @@
-import java.util.Scanner;
 import java.util.Stack;
+import java.util.Scanner;
 
-public class NextGreaterElement {
+public class NextsmallerElementRight {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -10,14 +10,9 @@ public class NextGreaterElement {
             arr[i] = sc.nextInt();
         }
 
-        // next greater element optimal approach using stack
-        int[] nge = nextGreaterElement(arr, n);
-        printArray(nge);
-
-        /*
-         * Time Complexity - O(n)
-         * Space Complexity - O(n)
-         */
+        // next smaller element to the right
+        int[] nse = nextSmallerElementRight(arr, n);
+        printArray(nse);
 
     }
 
@@ -27,21 +22,22 @@ public class NextGreaterElement {
         }
     }
 
-    public static int[] nextGreaterElement(int[] arr, int n) {
-        int nge[] = new int[n];
+    public static int[] nextSmallerElementRight(int[] arr, int n) {
+        int[] nse = new int[n];
         Stack<Integer> st = new Stack<Integer>();
         for (int i = n - 1; i >= 0; i--) {
-            while (!st.empty() && st.peek() <= arr[i]) {
+            while (st.size() > 0 && st.peek() >= arr[i]) {
                 st.pop();
             }
+
             if (st.empty()) {
-                nge[i] = -1;
+                nse[i] = -1;
             } else {
-                nge[i] = st.peek();
-            }z
+                nse[i] = st.peek();
+            }
             st.push(arr[i]);
         }
 
-        return nge;
+        return nse;
     }
 }
