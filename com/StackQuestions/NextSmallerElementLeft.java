@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Stack;
 
-public class NextGreaterElementLeft {
+public class NextSmallerElementLeft {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -10,8 +10,8 @@ public class NextGreaterElementLeft {
             arr[i] = sc.nextInt();
         }
 
-        int[] nge = nextGreaterElementLeft(arr, n);
-        printArray(nge);
+        int[] nse = nextSmallerElementLeft(arr, n);
+        printArray(nse);
 
         /*
          * Time complexity - O(n)
@@ -26,21 +26,21 @@ public class NextGreaterElementLeft {
         }
     }
 
-    public static int[] nextGreaterElementLeft(int[] arr, int n) {
-        int[] nge = new int[n];
+    public static int[] nextSmallerElementLeft(int[] arr, int n) {
+        int[] nse = new int[n];
         Stack<Integer> st = new Stack<Integer>();
         for (int i = 0; i < n; i++) {
-            while (st.size() > 0 && st.peek() <= arr[i]) {
+            while (st.size() > 0 && st.peek() >= arr[i]) {
                 st.pop();
             }
 
             if (st.empty()) {
-                nge[i] = -1;
+                nse[i] = -1;
             } else {
-                nge[i] = st.peek();
+                nse[i] = st.peek();
             }
             st.push(arr[i]);
         }
-        return nge;
+        return nse;
     }
 }
