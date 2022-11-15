@@ -21,6 +21,9 @@ public class MinNumOFJumpTOReachEnd {
         int minJumpDpTopDown = dpTopDown(nums);
         System.out.println(minJumpDpTopDown);
 
+        int optimizedResult = minJumps(nums);
+        System.out.println(optimizedResult);
+
     }
 
     public static int recursive(int nums[], int i) {
@@ -83,5 +86,33 @@ public class MinNumOFJumpTOReachEnd {
 
         return dp[0];
 
+    }
+
+    // best solution - T.c - O(n) S.C. - O(1)
+
+    // In this solution we are using ladder and stairs
+    public static int minJumps(int[] nums) {
+        if (nums.length <= 1) {
+            return 0;
+        }
+
+        int ladder = nums[0];
+        int stairs = nums[0];
+        int jump = 1;
+        for (int i = 1; i < nums.length; i++) {
+            if (i == nums.length - 1) {
+                return jump;
+            }
+            if (i + nums[i] > ladder) {
+                ladder = i + nums[i];
+            }
+            stairs--;
+            if (stairs == 0) {
+                jump++;
+                stairs = ladder - i;
+            }
+        }
+
+        return jump;
     }
 }
