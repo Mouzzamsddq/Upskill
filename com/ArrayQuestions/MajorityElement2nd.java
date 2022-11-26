@@ -46,8 +46,7 @@ public class MajorityElement2nd {
         for (int ele : arr) {
             if (ele == candidate1) {
                 c1++;
-            }
-            if (ele == candidate2) {
+            } else if (ele == candidate2) {
                 c2++;
             }
         }
