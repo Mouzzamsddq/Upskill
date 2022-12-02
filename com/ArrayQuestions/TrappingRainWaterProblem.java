@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+// time complexity  - O(N)
+// Space Complexity - o(1)
 public class TrappingRainWaterProblem {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -12,7 +14,7 @@ public class TrappingRainWaterProblem {
         int hi = n - 1;
         int leftMax = 0;
         int rightMax = 0;
-        int res = 0;
+        long res = 0;
         while (lo <= hi) {
             if (a[lo] <= a[hi]) {
                 if (a[lo] >= leftMax) {
@@ -27,7 +29,7 @@ public class TrappingRainWaterProblem {
                 } else {
                     res += rightMax - a[hi];
                 }
-                hi++;
+                hi--;
             }
         }
         System.out.println(res);
