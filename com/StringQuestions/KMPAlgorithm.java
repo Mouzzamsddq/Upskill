@@ -1,7 +1,12 @@
 import java.util.Scanner;
 
-import javax.print.attribute.TextSyntax;
-
+/* KMP Algo for pattern searching
+ * Time complexity - O(m + n) 
+ * where m = length of text
+ * where n = length of pattern
+ * 
+ * Space complexity -  O(n) where n is length of pattern
+ */
 public class KMPAlgorithm {
 
     public static void main(String[] args) {
