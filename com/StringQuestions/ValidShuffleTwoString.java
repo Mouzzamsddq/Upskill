@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -26,20 +27,27 @@ public class ValidShuffleTwoString {
         if (s1.length() + s2.length() != res.length()) {
             return false;
         }
+        char[] firstString = s1.toCharArray();
+        Arrays.sort(firstString);
+        char[] secondString = s2.toCharArray();
+        Arrays.sort(secondString);
+        char[] resultString = res.toCharArray();
+        Arrays.sort(resultString);
+
         int i = 0;
         int j = 0;
         int k = 0;
         while (k < res.length()) {
-            if (i < s1.length() && s1.charAt(i) == res.charAt(k)) {
+            if (i < firstString.length && firstString[i] == resultString[k]) {
                 i++;
-            } else if (j < s2.length() && s2.charAt(j) == res.charAt(k)) {
+            } else if (j < secondString.length && secondString[j] == resultString[k]) {
                 j++;
             } else {
                 break;
             }
             k++;
         }
-        if (k == res.length()) {
+        if (k == resultString.length) {
             return true;
         } else {
             return false;
