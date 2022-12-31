@@ -9,7 +9,8 @@ public class Pattern7 {
                 if (j >= n - 1 - i && j <= n - 1 + i) {
                     System.out.print("* ");
                 } else {
-                    System.out.print("  ");
+                    if ((j <= n - 1 + i))
+                        System.out.print("  ");
                 }
             }
             System.out.println();
