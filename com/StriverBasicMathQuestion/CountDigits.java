@@ -8,7 +8,7 @@ public class CountDigits {
         int temp = n, answerCount = 0;
         while (temp != 0) {
             int lastDigit = temp % 10;
-            if (n % lastDigit == 0) {
+            if (lastDigit != 0 && n % lastDigit == 0) {
                 answerCount++;
             }
             temp = temp / 10;
