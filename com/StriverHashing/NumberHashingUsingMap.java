@@ -30,5 +30,7 @@ public class NumberHashingUsingMap {
             userInput = sc.nextInt();
         }
         
+        System.out.println("program end");
+        sc.close();
     }
 }
