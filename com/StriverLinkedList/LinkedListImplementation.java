@@ -186,8 +186,25 @@ public class LinkedListImplementation {
                 prev = current;
                 current = temp;
             }
-            head = prev;
-            
+            head = prev;    
+        }
+        public void removeAt(int idx) {
+            if(idx < 0 || idx >= size) {
+                System.out.println("Invalid args");
+            } else if(size == 0) {
+                System.out.println("List is empty");
+            } else if(idx == 0){
+                removeFirst();
+            } else if(idx == size -1) {
+                removeLast();
+            } else {
+                Node tempHead = head;
+                for(int i = 0 ; i < idx - 1 ; i++) {
+                    tempHead = tempHead.next;
+                }
+                tempHead.next = tempHead.next.next;
+                size--;
+            }
         }
     }
 
@@ -248,6 +265,12 @@ public class LinkedListImplementation {
         list.reversePI();
         list.display();
         list.reversePI();
+        list.display();
+        list.removeAt(3);
+        list.display();
+        list.removeAt(0);
+        list.display();
+        list.removeAt(3);
         list.display();
     }
 }
