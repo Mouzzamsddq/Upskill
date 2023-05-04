@@ -37,6 +37,10 @@ public class QuickSort {
         }
     }
 
+    /*
+     * We are doing partion that is we are picking one pivot element and move all the smaller element left to the pivot and 
+     * move all the greater element right of the pivot and then put pivot at its correct pos.
+     */
     public static int partion(int []a, int lo, int hi) {
         int pivot = a[lo];
         int i = lo;
