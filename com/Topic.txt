@@ -5,5 +5,5 @@ Java Collections
 Java Comparable And Comparator Interface
 Array Theory 
 Recursion - Basic Patterns
-
-
+Hashing
+LinkedList Data Structure
