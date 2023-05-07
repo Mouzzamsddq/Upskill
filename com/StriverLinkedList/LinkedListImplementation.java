@@ -206,6 +206,110 @@ public class LinkedListImplementation {
                 size--;
             }
         }
+
+        public int kThNodeFromLast(int k) {
+            if(k < 0 || k >=  size) {
+                System.out.println("Invalid args...!");
+                return -1;
+            }
+            Node slow = head;
+            Node fast = head;
+            
+            for(int i = 0; i < k ; i++) {
+                fast = fast.next;
+            }
+
+            while(fast != tail) {
+                slow = slow.next;
+                fast = fast.next;
+            }
+
+            return slow.data;
+        }
+
+        public int midOfLinkedList() {
+            Node slow = head;
+            Node fast = head;
+            
+            while(fast.next != null && fast.next.next != null) {
+                slow = slow.next;
+                fast = fast.next.next;
+            }
+
+            return slow.data;
+        }
+
+
+        public static LinkedList mergeTwoSortedLinkedList(LinkedList linkedList1 , LinkedList linkedList2) {
+            LinkedList mergedList = new LinkedList();
+            Node temp1 = linkedList1.head;
+            Node temp2 = linkedList2.head;
+            while(temp1 != null && temp2 != null) {
+                if(temp1.data < temp2.data) {
+                     mergedList.addLast(temp1.data);
+                     temp1 = temp1.next;
+                } else {
+                     mergedList.addLast(temp2.data);
+                     temp2 = temp2.next;
+                }
+            }
+            
+            while(temp1 != null) {
+                mergedList.addLast(temp1.data);
+                temp1 = temp1.next;
+            }
+
+            while(temp2 != null) {
+                mergedList.addLast(temp2.data);
+                temp2 = temp2.next;
+            }
+
+            return mergedList;
+        }
+
+        public void clear() {
+            head = tail = null;
+            size = 0;
+        }
+
+        public Node getMidNode(Node head, Node tail) {
+            Node slow = head;
+            Node fast = tail;
+            while(fast != null && fast.next != null) {
+                fast = fast.next.next;
+                slow = slow.next;
+            }
+            return slow;
+        }
+
+        public LinkedList mergeSort(Node head, Node tail) {
+            if(head == tail) {
+                LinkedList baseList = new LinkedList();
+                baseList.addLast(head.data);
+                return baseList;
+            }
+            Node midNode = getMidNode(head, tail);
+            LinkedList fsh = mergeSort(head, midNode);
+            LinkedList ssh = mergeSort(midNode.next, tail);
+            LinkedList finalList = mergeTwoSortedLinkedList(fsh, ssh);
+            return finalList;
+        }
+
+        public void removeDuplicatesFromSortedLinkedList() {
+            LinkedList res  = new LinkedList();
+            while(this.size() > 0) {
+                int val  = this.getFirst();
+                this.removeFirst();
+
+                if(res.size() == 0 || res.tail.data != val) {
+                    res.addLast(val);
+                }
+            }
+
+            this.head = res.head;
+            this.tail = res.tail;
+            this.size = res.size;
+        }
     }
 
     public static void main(String [] args) {
@@ -272,5 +376,51 @@ public class LinkedListImplementation {
         list.display();
         list.removeAt(3);
         list.display();
+        System.out.println("Kth Node : "+ list.kThNodeFromLast(2));
+        System.out.println("Mid of the linked list : "+list.midOfLinkedList());
+        
+        list.clear();
+        list.addLast(10);
+        list.addLast(20);
+        list.addLast(30);
+        list.addLast(40);
+        list.addLast(50);
+
+        LinkedList list2 = new LinkedList();
+        list2.addLast(12);
+        list2.addLast(24);
+        list2.addLast(34);
+        list2.addLast(54);
+
+        LinkedList mergedList = LinkedList.mergeTwoSortedLinkedList(list, list2);
+        mergedList.display();
+        LinkedList list3 = new LinkedList();
+        list3.addLast(10);
+        list3.addLast(2);
+        list3.addLast(99);
+        list3.addLast(50);
+        list3.addLast(19);
+        list3.addLast(12);
+        list3.addLast(55);
+        list3 = list3.mergeSort(list3.head, list3.tail);
+        list3.display();
+
+        LinkedList l4 = new LinkedList();
+        l4.addLast(10);
+        l4.addLast(10);
+        l4.addLast(10);
+        l4.addLast(10);
+        l4.addLast(20);
+        l4.addLast(20);
+        l4.addLast(20);
+        l4.addLast(30);
+        l4.addLast(30);
+        l4.addLast(30);
+        l4.addLast(40);
+        l4.addLast(50);
+        l4.display();
+        l4.removeDuplicatesFromSortedLinkedList();
+        l4.display();
+
     }
 }
