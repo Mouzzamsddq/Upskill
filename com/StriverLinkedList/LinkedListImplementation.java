@@ -310,6 +310,38 @@ public class LinkedListImplementation {
             this.tail = res.tail;
             this.size = res.size;
         }
+
+        public void oddEven() {
+            LinkedList odd = new LinkedList();
+            LinkedList even = new LinkedList();
+            while(this.size() > 0) {
+                int val = getFirst();
+                if(val % 2 == 0) {
+                    even.addLast(val);
+                } else {
+                    odd.addLast(val);
+                }
+                this.removeFirst();
+            }
+
+
+            if(odd.size > 0 && even.size > 0) {
+                odd.tail.next = even.head;
+                this.head = odd.head;
+                this.tail = even.tail;
+                this.size = odd.size + even.size;
+            } else if(odd.size > 0) {
+                this.head = odd.head;
+                this.tail = odd.tail;
+                this.size = odd.size;
+            } else if(even.size > 0) {
+                this.head = even.head;
+                this.tail = even.tail;
+                this.size = even.size;
+            }
+           
+
+        }
     }
 
     public static void main(String [] args) {
@@ -421,6 +453,23 @@ public class LinkedListImplementation {
         l4.display();
         l4.removeDuplicatesFromSortedLinkedList();
         l4.display();
+
+
+        // for testing odd even 
+        LinkedList testOddEvenList = new LinkedList();
+        testOddEvenList.addLast(5);
+        testOddEvenList.addLast(6);
+        testOddEvenList.addLast(12);
+        testOddEvenList.addLast(13);
+        testOddEvenList.addLast(8);
+        testOddEvenList.addLast(88);
+        testOddEvenList.addLast(17);
+        testOddEvenList.addLast(15);
+        testOddEvenList.addLast(30);
+        testOddEvenList.addLast(31);
+        testOddEvenList.display();
+        testOddEvenList.oddEven();
+        testOddEvenList.display();
 
     }
 }
