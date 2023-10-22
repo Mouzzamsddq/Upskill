@@ -173,6 +173,25 @@ public class LinkedListImpl {
             }
             head = prev;
         }
+
+        public void removeAt(int index) {
+            if(head == null) {
+                System.out.println("Linkedlist is empty");
+            } else if(index < 0 || index >= size) {
+                System.out.println("Invaid args");
+            } else if(index == 0) {
+                removeFirst();
+            } else if(index == size - 1) {
+                removeLast();
+            } else {
+                Node tempHead = head;
+                for(int i = 0 ; i < index - 1 ; i++) {
+                    tempHead = tempHead.next;
+                }
+                tempHead.next = tempHead.next.next;
+                size--;
+            }
+        }
      
     }
 
@@ -220,5 +239,10 @@ public class LinkedListImpl {
        System.out.println("After perform reverse PI");
        linkedList.reversePI();
        linkedList.print();
+       linkedList.removeAt(5);
+       linkedList.print();
+       linkedList.removeAt(2);
+       linkedList.print();
+       System.out.println("Size of linkedlist :"+ linkedList.size);
     }
 }
