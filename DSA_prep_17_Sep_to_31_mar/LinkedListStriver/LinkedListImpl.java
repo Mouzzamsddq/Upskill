@@ -7,10 +7,19 @@ public class LinkedListImpl {
         // creating array
         int[] arr = new int[]{1,5,13,12,16};
         Node head = convertArrToLL(arr);
-        System.out.println(head.next.data);
+        // traversal 
+        Node temp = head;
+        while(temp != null) {
+            System.out.print(temp.data+" ");
+            temp = temp.next;
+        }
 
     }
 
+
+    /*
+     * T.C - O(n) - Simple traversal
+     */
     public static Node convertArrToLL(int[] arr) {
         if(arr.length == 0) {
             return null;
