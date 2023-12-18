@@ -3,7 +3,12 @@ public class DoublyLinkedListImpl {
           //create an array with 5 values
           int []arr = new int[]{10,20,30,40,50};
           Node headNode = convertArrToDll(arr);
-          Node tempNode = headNode;
+          headNode = deleteFromBeg(headNode);
+          printDLL(headNode);
+    }
+
+    public static void printDLL(Node head) {
+        Node tempNode = head;
           while(tempNode != null) {
                System.out.print(tempNode.data +" ");
                tempNode = tempNode.next;
@@ -23,6 +28,19 @@ public class DoublyLinkedListImpl {
              tempNode = tempNode.next;
          }
          return headNode;
+    }
+
+    /*
+     * T.C. - O(1)
+     * S.C. - O(1)
+     */
+    public static Node  deleteFromBeg(Node head) {
+          if(head ==  null) {
+             return head;
+          }
+          head = head.next;
+          head.prev = null;
+          return head;
     }
 }
 
