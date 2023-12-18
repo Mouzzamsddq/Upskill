@@ -7,12 +7,16 @@ public class LinkedListImpl {
         // creating array
         int[] arr = new int[]{1,5,13,12,16};
         Node head = convertArrToLL(arr);
+        head = deleteAtPos(head, 1);
         // traversal 
         Node temp = head;
         while(temp != null) {
             System.out.print(temp.data+" ");
             temp = temp.next;
         }
+
+        System.out.println();
+        System.out.println("Length of linkedList : "+lengthOfLL(head));
 
     }
 
@@ -31,6 +35,120 @@ public class LinkedListImpl {
             temp.next = latestNode;
             temp = latestNode;
         }
+        return head;
+    }
+
+    /*
+     * T.C. - O(n)
+     */
+    public static int lengthOfLL(Node head) {
+        int count = 0;
+        Node temp = head;
+        while(temp != null) {
+            temp = temp.next;
+            count++;
+        }
+        return count;
+    }
+
+    /*
+     * T.C. - O(n) - worst case
+     *      - O(1) - Best Case
+     */
+    public static int searchElement(Node head, int ele) {
+        Node temp = head;
+        while(temp != null) {
+            if(temp.data == ele) {
+                return 1;    
+            }
+            temp = temp.next;
+        }
+
+        return 0;
+    }
+
+
+    /*
+     * T.C. - O(1) - 
+     */
+    public static Node deletionFrombeg(Node head) {
+        if(head == null) {
+            return head;
+        }
+        return head.next;
+    }
+
+    /*
+     * T.C. - O(n)
+     * S.C - O(1)
+     */
+    public static Node deletionFromEnd(Node head) {
+        if(head == null) {
+            return head;
+        }
+        Node temp = head;
+        while(temp.next != null && temp.next.next != null) {
+            temp = temp.next;
+        }
+        temp.next = null;
+        return head;
+    }
+
+    public static Node deleteAtPos(Node head, int pos) {
+        if(head == null) {
+			return head;
+		} 
+	    if(pos < 0) {
+			return head;
+		}
+		if(pos == 0) {
+			return head.next;
+		}
+		pos = pos - 1;
+		Node temp = head;
+		while(pos > 0) {
+			if(temp == null) {
+				return head;
+			}
+			temp = temp.next;
+			if(temp == null) {
+				return head;
+			}
+			pos--;
+		}
+		if(temp.next == null) {
+			return head;
+		}
+		temp.next  = temp.next.next;
+		return head;
+    }
+
+    /*
+     * T.C. - O(1)
+     * S.C. - O(1)
+     */
+    public static Node insertAtBeg(Node head, int data) {
+        Node newNode = new Node(data);
+        newNode.next = head;
+        head = newNode;
+        return head;    
+    }
+
+    /*
+     * T.C. - O(n) - worst case, O(1) - best case
+     * S.C. - O(1) 
+     */
+    public static Node insertAtEnd(Node head, int data) {
+        Node newNode = new Node(data);
+        if(head == null) {
+            head = newNode;
+            return head;
+        }
+        Node temp = head;
+        while(temp.next != null) {
+            temp = temp.next;
+        }
+        temp.next = newNode;
         return head;
     }
 }
