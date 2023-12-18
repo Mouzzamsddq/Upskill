@@ -170,6 +170,34 @@ public static Node insertBeforeTail(Node head, int K) {
         }
         return head;
     }
+
+    /*
+     * T.C. - O(n) 
+     * S.C. - O(1)
+     */
+    public static Node insertAtTail(Node head, int K) {
+         if(head == null) {
+             Node n = new Node(K);
+             head = n;
+             return head;
+         }
+         if(head.next == null) {
+             Node n = new Node(K);
+             n.prev = head;
+             head.next = n;
+             return head;
+             
+         }
+
+         Node temp = head;
+         while(temp.next != null) {
+             temp = temp.next;
+         }
+         Node n = new Node(K);
+         n.prev = temp;
+         temp.next = n;
+         return head;
+    }
 }
 
 
