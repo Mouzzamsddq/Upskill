@@ -35,13 +35,49 @@ public class DoublyLinkedListImpl {
      * S.C. - O(1)
      */
     public static Node  deleteFromBeg(Node head) {
-          if(head ==  null) {
-             return head;
-          }
-          head = head.next;
-          head.prev = null;
-          return head;
+        if(head ==  null) {
+            return head;
+         }
+         head = head.next;
+         if(head != null)
+             head.prev = null;
+         return head;
     }
+
+    /*
+     * T.C.- O(n) - worst case
+     * S.C. - O(1) 
+     */
+    public static Node deleteLastNode(Node head) {
+        if(head == null) {
+            return head;
+        }
+        Node temp = head;
+        if(temp.next == null) {
+            return null;
+        }
+        while(temp.next != null && temp.next.next != null) {
+            temp = temp.next;
+        }
+        if(temp.next != null)
+             temp.next.prev = null;
+        temp.next = null;
+        return head;
+   }
+
+   /*
+    * T.C. - O(1)
+    * S.C. - O(1)
+    */
+   public static Node insertAtFront(Node head, int k) {
+    Node newNode = new Node(k);
+    newNode.next = head;
+    if(head != null) {
+        head.prev = newNode;
+    }
+    head = newNode;
+    return head;
+}
 }
 
 
