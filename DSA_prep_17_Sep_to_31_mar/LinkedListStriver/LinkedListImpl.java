@@ -151,6 +151,57 @@ public class LinkedListImpl {
         temp.next = newNode;
         return head;
     }
+
+    /*
+     * T.C. - O(k) 
+     * S.C. - O(1)
+     */
+    public static Node insertAtPos(Node head, int n, int pos, int val) {
+        int count = 0;
+        Node newNode = new Node(val);
+        if(pos == 0) {
+            newNode.next = head;
+            head = newNode;
+            return head;
+        }
+        Node temp = head;
+        while(temp != null) {
+            if(count == pos - 1) {
+                newNode.next = temp.next;
+                temp.next = newNode;
+                break;
+            }
+            temp = temp.next;
+            count++;
+        }
+        return head;
+    }
+
+    /*
+     * T.C. - O(k) 
+     * S.C. - O(1)
+     */
+    public static Node insertBeforeValue(Node head, int x, int val) {
+        Node newNode = new Node(x);
+        Node temp = head;
+        if(temp.data == val) {
+            newNode.next = head;
+            head = newNode;
+            return head;
+        }
+        while(temp != null) {
+            if(temp.next == null) {
+                break;
+            }
+            if(temp.next.data == val) {
+                newNode.next = temp.next;
+                temp.next = newNode;
+                break;
+            }
+            temp = temp.next;
+        }
+        return head;
+    }
 }
 
 class Node {
