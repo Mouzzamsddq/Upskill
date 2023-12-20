@@ -66,6 +66,41 @@ public class DoublyLinkedListImpl {
    }
 
    /*
+    * T.C. - O(n)
+    * S.C. - O(1)
+    */
+   public static Node deleteKthNode(Node head, int k) {
+    if(head == null || k < 1) {
+        return head;
+    }
+    if(k == 1) {
+        head = head.next;
+        if(head != null) {
+            head.prev = null;
+        }
+        return head;
+    }
+    int count = 1;
+    Node temp = head;
+    while(temp != null) {
+        if(count == k - 1) {
+            if(temp.next != null) {
+            temp.next = temp.next.next;
+            if(temp.next != null) {
+                temp.next.prev = temp;
+            }
+            }
+            break;
+        }
+        temp = temp.next;
+        count++;
+    }
+
+    return head;
+
+}
+
+   /*
     * T.C. - O(1)
     * S.C. - O(1)
     */

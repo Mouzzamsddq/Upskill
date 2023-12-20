@@ -5,9 +5,9 @@ public class LinkedListImpl {
         
 
         // creating array
-        int[] arr = new int[]{1,5,13,12,16};
+        int[] arr = new int[]{74,65,82,27,24};
         Node head = convertArrToLL(arr);
-        head = deleteAtPos(head, 1);
+        head = deleteFromPos(head, 6);
         // traversal 
         Node temp = head;
         while(temp != null) {
@@ -94,34 +94,26 @@ public class LinkedListImpl {
         return head;
     }
 
-    public static Node deleteAtPos(Node head, int pos) {
-        if(head == null) {
-			return head;
-		} 
-	    if(pos < 0) {
-			return head;
-		}
-		if(pos == 0) {
-			return head.next;
-		}
-		pos = pos - 1;
-		Node temp = head;
-		while(pos > 0) {
-			if(temp == null) {
-				return head;
-			}
-			temp = temp.next;
-			if(temp == null) {
-				return head;
-			}
-			pos--;
-		}
-		if(temp.next == null) {
-			return head;
-		}
-		temp.next  = temp.next.next;
-		return head;
-    }
+    public static Node deleteFromPos( Node head, int k) {
+		if(k < 0 || head == null) {
+            return head;
+        }
+        if(k == 0) {
+            head = head.next;
+            return head;
+        }
+        int count = 0;
+        Node temp = head;
+        while(temp != null) {
+            if(count == k - 1) {
+                temp.next = temp.next.next;
+                break;
+            }
+            temp = temp.next;
+            count++;
+        }
+        return head;
+	}
 
     /*
      * T.C. - O(1)
