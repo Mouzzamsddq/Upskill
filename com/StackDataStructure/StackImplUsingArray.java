@@ -43,6 +43,10 @@ class Stack {
         }
     }
 
+    public int size() {
+        return ++top;
+    }
+
     public void print() {
         if(isEmpty()) {
            System.out.println("Stack is empty");
@@ -58,6 +62,7 @@ class Stack {
 public class StackImplUsingArray {
     public static void main(String []args) {
         Stack st = new Stack(5);
+        System.out.println("The size of the stack: "+st.size());
         st.push(10);
         st.push(20);
         st.push(30);
